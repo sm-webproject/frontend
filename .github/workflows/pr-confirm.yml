@@ -1,0 +1,19 @@
+name: PR Confirm
+
+on:
+  pull_request:
+    branches: [main, dev]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    name: build and upload to s3
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: 📦 Install node modules
+        run: yarn install
+      - name: 🚀 Build project
+        run: yarn build

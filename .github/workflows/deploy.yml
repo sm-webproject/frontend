@@ -1,0 +1,38 @@
+name: Deploy
+
+on:
+#  push:
+#    branches: [main, dev]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    name: build and upload to s3
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{secrets.AWS_ACCESS_KEY}}
+          aws-secret-access-key: ${{secrets.AWS_SECRET_KEY}}
+          aws-region: 'ap-northeast-2'
+
+      - name: 📦 Install node modules
+        run: yarn install
+      - name: 🚀 Build Project
+        run: yarn build
+      - name: 🚀 Deploy Prod S3 And reset CloudFront
+        run: |
+          aws s3 cp build s3://${{ secrets.AWS_S3 }} --recursive --acl public-read
+          aws cloudfront create-invalidation --distribution-id ${{secrets.AWS_CLOUD_FRONT}} --paths "/*"
+        if: github.ref == 'refs/heads/main'
+      - name: 🚀 Deploy Dev S3 And reset CloudFront
+        run: |
+          yarn build:dev
+          aws s3 cp build s3://${{ secrets.AWS_S3_DEV }} --recursive --acl public-read
+          aws cloudfront create-invalidation --distribution-id ${{secrets.AWS_CLOUD_FRONT_DEV}} --paths "/*"
+        if: github.ref == 'refs/heads/dev'
