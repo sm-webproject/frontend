@@ -1,21 +1,14 @@
-import Splash from "../components/Splash";
-import AuthRoute from "./AuthRoute";
-import IndexRoute from "./IndexRoute";
-import useAuth from "../store/useAuth";
 import { useEffect } from "react";
 import { RouteObject } from "react-router";
 import { useRoutes } from "react-router-dom";
 
-import IndexPage from "../pages/IndexPage";
+import useAuth from "../store/useAuth";
+import AuthRoute from "./AuthRoute";
+import IndexRoute from "./IndexRoute";
 
 const RootRoute = () => {
   const { loaded, initial, user } = useAuth();
-  const routes: RouteObject[] = [
-    {
-      path: "/",
-      element: <IndexPage />,
-    },
-  ];
+  const routes: RouteObject[] = [];
 
   useEffect(() => {
     if (!loaded) {
@@ -32,7 +25,7 @@ const RootRoute = () => {
 
   return (
     <>
-      <Splash show={loaded} />
+      {/* <Splash show={loaded} />*/}
       {route}
     </>
   );

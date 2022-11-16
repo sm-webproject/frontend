@@ -1,26 +1,24 @@
-import { Center, Flex, Img, Text } from "@chakra-ui/react";
+import { Center, Flex } from "@chakra-ui/react";
+import { Text } from "@components/Element";
 
 const Header = () => (
   <Flex
-    borderBottom="3px solid"
-    borderColor="primary"
+    bg="transparent"
     flexDir="column"
+    height="80px"
     justifyContent="center"
     pb="12px"
     width="100%"
   >
-    <Center>
-      <Img height="80px" src="/images/logo.png" width="80px" />
-      <Text color="primary" fontSize="60px" lineHeight={1}>
-        PC
+    <Center gap="32px">
+      <Text fontSize="xl" fontWeight="bold">
+        홈
       </Text>
-      <Text color="secondary" fontSize="60px" lineHeight={1}>
-        UP
+      <Text fontSize="xl" fontWeight="bold">
+        주제별 페이지
       </Text>
-    </Center>
-    <Center>
-      <Text color="primary" fontSize="16px" fontWeight="bold" lineHeight={1}>
-        Personal Color & Make Up
+      <Text fontSize="xl" fontWeight="bold">
+        마이 페이지
       </Text>
     </Center>
   </Flex>
