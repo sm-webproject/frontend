@@ -9,10 +9,6 @@
       "@utils/*": ["./utils/*"],
       "@store/*": ["./store/*"],
       "@theme/*": ["./theme/*"],
-      "@hooks/*": ["./hooks/*"],
-      "@pages/*": ["./pages/*"],
-      "@constants/*": ["./constants/*"],
-      "@interfaces/*": ["./interfaces/*"],
       "@/*": ["./*"]
     },
     "lib": [

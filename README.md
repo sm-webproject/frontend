@@ -64,6 +64,6 @@
 
 개발 앱을 빌드한다.
 
-### `yarn storybook`
+### 'yarn storybook'
 
 스토리북 실행
