@@ -18,7 +18,7 @@ const IndexPage = () => {
             What is &apos;D&apos;log(임의지정)?
           </Text>
           <Text>
-            Developer's Blog의 약자로 개발자들을 위한 Blog 사이트 입니다
+            Developer&apos;s Blog의 약자로 개발자들을 위한 Blog 사이트 입니다
           </Text>
         </Box>
         <Box width="100%">
