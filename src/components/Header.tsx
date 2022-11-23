@@ -1,29 +1,29 @@
-import { UserOutlined } from "@ant-design/icons";
-import { Box, Flex } from "@chakra-ui/react";
+import { EditOutlined, UserOutlined } from "@ant-design/icons";
+import { Flex } from "@chakra-ui/react";
 import { Text } from "@components/Element";
 import { Avatar } from "antd";
+import React from "react";
 import { Link } from "react-router-dom";
 
 const Header = () => (
   <Flex
+    alignItems="center"
     bg="transparent"
-    flexDir="column"
-    float="right"
     height="60px"
-    pb="12px"
+    justifyContent="space-between"
     width="100%"
   >
-    <Text fontSize="2xl" fontWeight="bold" textAlign="center">
+    <Text fontSize="2xl" fontWeight="bold">
       <Link style={{ color: "black" }} to="/">
         Dlog
       </Link>
     </Text>
-    <Box float="right" marginTop="1" position="absolute">
+    <Flex alignItems="center" gap="16px">
       <Avatar icon={<UserOutlined />} />
-    </Box>
-    {
-      // Avartar 오른쪽으로 밀어놓기..
-    }
+      <Link to="/write">
+        <Avatar icon={<EditOutlined />} />
+      </Link>
+    </Flex>
   </Flex>
 );
 
