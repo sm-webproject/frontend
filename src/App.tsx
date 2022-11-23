@@ -9,14 +9,15 @@ import {
   useColorMode,
 } from "@chakra-ui/react";
 import { css, Global } from "@emotion/react";
-import RootRoutes from "./routes/RootRoute";
-import Theme from "./theme/theme";
 import { ConfigProvider, Modal } from "antd";
 import koKR from "antd/lib/locale/ko_KR";
 import AOS from "aos";
 import axios from "axios";
 import React, { useEffect } from "react";
 import { BrowserRouter } from "react-router-dom";
+
+import RootRoutes from "./routes/RootRoute";
+import Theme from "./theme/theme";
 
 axios.defaults.baseURL = import.meta.env.VITE_BASE_URL;
 
