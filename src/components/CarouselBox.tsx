@@ -1,36 +1,25 @@
+import { Box, Center } from "@chakra-ui/react";
 import { Carousel } from "antd";
 import React from "react";
 
-const contentStyle: React.CSSProperties = {
-  margin: 0,
-  height: "300px",
-  color: "#fff",
-  lineHeight: "300px",
-  textAlign: "center",
-  background: "black",
-};
-
-const Carouselbox = () => {
-  const onChange = (currentSlide: number) => {
-    console.log(currentSlide);
-  };
-
-  return (
-    <Carousel afterChange={onChange} autoplay>
-      <div>
-        <h3 style={contentStyle}>1</h3>
-      </div>
-      <div>
-        <h3 style={contentStyle}>2</h3>
-      </div>
-      <div>
-        <h3 style={contentStyle}>3</h3>
-      </div>
-      <div>
-        <h3 style={contentStyle}>4</h3>
-      </div>
-    </Carousel>
-  );
-};
+const Carouselbox = () => (
+  <Carousel autoplay>
+    <Center bg="primary" color="mainText" height="360px" width="100%">
+      <Box>Tlog 상단 배너 #1</Box>
+    </Center>
+    <Center bg="primary" color="mainText" height="360px" width="100%">
+      Tlog 상단 배너 #2
+    </Center>
+    <Center bg="primary" color="mainText" height="360px" width="100%">
+      Tlog 상단 배너 #3
+    </Center>
+    <Center bg="primary" color="mainText" height="360px" width="100%">
+      Tlog 상단 배너 #4
+    </Center>
+    <Center bg="primary" color="mainText" height="360px" width="100%">
+      Tlog 상단 배너 #5
+    </Center>
+  </Carousel>
+);
 
 export default Carouselbox;

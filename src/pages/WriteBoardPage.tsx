@@ -7,10 +7,11 @@ const { TextArea } = Input;
 
 const WritePage = () => {
   const [value, setValue] = useState("");
+
   return (
     <Flex flexDir="column" gap="16px">
       <TextArea autoSize={{ minRows: 1, maxRows: 1 }} placeholder="작성자" />
-      <Editor />
+      <Editor onChange={(v) => setValue(v)} value={value} />
       <Button backgroundColor="black" color="white">
         완료
       </Button>

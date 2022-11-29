@@ -1,30 +1,57 @@
-import { EditOutlined, UserOutlined } from "@ant-design/icons";
+import {
+  EditOutlined,
+  LoginOutlined,
+  LogoutOutlined,
+  OrderedListOutlined,
+  UserOutlined,
+} from "@ant-design/icons";
 import { Flex } from "@chakra-ui/react";
 import { Text } from "@components/Element";
+import useAuth from "@store/useAuth";
 import { Avatar } from "antd";
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Header = () => (
-  <Flex
-    alignItems="center"
-    bg="transparent"
-    height="60px"
-    justifyContent="space-between"
-    width="100%"
-  >
-    <Text fontSize="2xl" fontWeight="bold">
-      <Link style={{ color: "black" }} to="/">
-        Dlog
+const Header = () => {
+  const { user } = useAuth();
+
+  return (
+    <Flex
+      alignItems="center"
+      bg="transparent"
+      height="80px"
+      justifyContent="space-between"
+      width="100%"
+    >
+      <Link to="/">
+        <Text color="mainText" fontSize="2xl" fontWeight="bold">
+          Tlog
+        </Text>
       </Link>
-    </Text>
-    <Flex alignItems="center" gap="16px">
-      <Avatar icon={<UserOutlined />} />
-      <Link to="/write">
-        <Avatar icon={<EditOutlined />} />
-      </Link>
+      <Flex alignItems="center" gap="16px">
+        {user && (
+          <Link to="/mypage">
+            <Avatar icon={<UserOutlined />} />
+          </Link>
+        )}
+        {user && (
+          <Link to="/write">
+            <Avatar icon={<EditOutlined />} />
+          </Link>
+        )}
+        <Link to="list">
+          <Avatar icon={<OrderedListOutlined />} />
+        </Link>
+        {user ? (
+          <Avatar icon={<LogoutOutlined />} />
+        ) : (
+          <Link to="login">
+            <Avatar icon={<LoginOutlined />} />
+          </Link>
+        )}
+      </Flex>
     </Flex>
-  </Flex>
-);
+  );
+};
 
 export default Header;

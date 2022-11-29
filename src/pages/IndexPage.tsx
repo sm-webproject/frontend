@@ -1,36 +1,37 @@
 import { Box, Flex, Image, Text } from "@chakra-ui/react";
 import Carouselbox from "@components/CarouselBox";
-import Searchbar from "@components/SearchBar";
+import { Layout } from "@components/Element";
 import React from "react";
 
-import { Layout } from "../components/Element";
-
-const IndexPage = () => {
-  return (
-    <Layout bg="background">
-      <Flex flexDir="column" px="20px">
-        <Flex height="40px" justifyContent="end">
-          <Searchbar />
+const IndexPage = () => (
+  <Layout bg="background">
+    <Carouselbox />
+    <Flex flexDir="column" px="20px">
+      <Box my="48px" width="100%">
+        <Text color="mainText" fontSize="3xl" fontWeight="bold">
+          What is &apos;T&apos;log?
+        </Text>
+        <Text color="mainText">
+          Template Blog의 약자로 개발자들을 위한 Tlog 사이트 입니다
+        </Text>
+      </Box>
+      <Flex flexDir="column" gap="16px">
+        <Text color="mainText" height="40px">
+          Tlog에서 제공되는 템플릿을 활용해보세요
+        </Text>
+        <Flex flexDir={["column", "row", "row"]} gap="20px" width="100%">
+          <Image
+            src="images\main\example_1.png"
+            width={["100%", "50%", "50%"]}
+          />
+          <Image
+            src="images\main\example_2.png"
+            width={["100%", "50%", "50%"]}
+          />
         </Flex>
-        <Carouselbox />
-        <Box my="48px" width="100%">
-          <Text fontSize="4xl" fontWeight="bold">
-            What is &apos;D&apos;log(임의지정)?
-          </Text>
-          <Text>
-            Developer&apos;s Blog의 약자로 개발자들을 위한 Blog 사이트 입니다
-          </Text>
-        </Box>
-        <Box width="100%">
-          <Text height="40px">Dlog에서 제공되는 template을 활용해보세요</Text>
-          <Flex gap="20px" width="100%">
-            <Image src="images\main\example_1.png" width="50%" />
-            <Image src="images\main\example_2.png" width="50%" />
-          </Flex>
-        </Box>
       </Flex>
-    </Layout>
-  );
-};
+    </Flex>
+  </Layout>
+);
 
 export default IndexPage;
