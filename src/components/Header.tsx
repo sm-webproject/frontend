@@ -1,4 +1,4 @@
-import { EditOutlined, UserOutlined } from "@ant-design/icons";
+import { UserOutlined } from "@ant-design/icons";
 import { Flex } from "@chakra-ui/react";
 import { Text } from "@components/Element";
 import { Avatar } from "antd";
@@ -20,9 +20,6 @@ const Header = () => (
     </Text>
     <Flex alignItems="center" gap="16px">
       <Avatar icon={<UserOutlined />} />
-      <Link to="/write">
-        <Avatar icon={<EditOutlined />} />
-      </Link>
     </Flex>
   </Flex>
 );

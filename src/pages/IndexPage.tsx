@@ -1,7 +1,10 @@
+import { EditOutlined } from "@ant-design/icons";
 import { Box, Flex, Image, Text } from "@chakra-ui/react";
 import Carouselbox from "@components/CarouselBox";
 import Searchbar from "@components/SearchBar";
+import { Avatar } from "antd";
 import React from "react";
+import { Link } from "react-router-dom";
 
 import { Layout } from "../components/Element";
 
@@ -9,10 +12,15 @@ const IndexPage = () => {
   return (
     <Layout bg="background">
       <Flex flexDir="column" px="20px">
-        <Flex height="40px" justifyContent="end">
+        <Flex height="40px" justifyContent="center">
           <Searchbar />
         </Flex>
         <Carouselbox />
+        <Flex bottom="3" position="fixed" right="3">
+          <Link to="/write">
+            <Avatar icon={<EditOutlined />} />
+          </Link>
+        </Flex>
         <Box my="48px" width="100%">
           <Text fontSize="4xl" fontWeight="bold">
             What is &apos;D&apos;log(임의지정)?

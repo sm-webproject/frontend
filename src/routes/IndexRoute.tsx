@@ -4,7 +4,7 @@ import IndexPage from "@/pages/IndexPage";
 import WritePage from "@/pages/WriteBoardPage";
 
 import MainLayout from "../components/MainLayout";
-import InfoPage from "../pages/InfoPage";
+import InfoPage from "../pages/DetailPage";
 import ListPage from "../pages/ListPage";
 
 const IndexRoute: RouteObject = {
@@ -20,7 +20,7 @@ const IndexRoute: RouteObject = {
       element: <WritePage />,
     },
     {
-      path: "/info",
+      path: "/detail",
       element: <InfoPage />,
     },
     {
