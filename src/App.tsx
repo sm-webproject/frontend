@@ -11,7 +11,6 @@ import {
 import { css, Global } from "@emotion/react";
 import { ConfigProvider, Modal } from "antd";
 import koKR from "antd/lib/locale/ko_KR";
-import AOS from "aos";
 import axios from "axios";
 import React, { useEffect } from "react";
 import { BrowserRouter } from "react-router-dom";
@@ -31,10 +30,6 @@ const config: ThemeConfig = {
 };
 
 function App() {
-  useEffect(() => {
-    AOS.init();
-  });
-
   return (
     <ChakraProvider
       theme={extendTheme({
@@ -50,24 +45,6 @@ function InnerApp() {
   const { colorMode } = useColorMode();
 
   const theme = colorMode === "dark" ? Theme.dark : Theme.light;
-
-  console.info(
-    "%cBASE_URL: " + import.meta.env.VITE_BASE_URL,
-    "font-size:16px;"
-  );
-  console.info("%cMODE " + import.meta.env.MODE, "font-size:16px;");
-  console.info(
-    "%c함께하는 개발 파트너, 데브파이브",
-    "color: #a600f4;font-size:22px;background:white;"
-  );
-  console.info(
-    "%c ____   _____ __     __ _____  ___ __     __ _____ \n" +
-      "|  _ \\ | ____|\\ \\   / /|  ___||_ _|\\ \\   / /| ____|\n" +
-      "| | | ||  _|   \\ \\ / / | |_    | |  \\ \\ / / |  _|  \n" +
-      "| |_| || |___   \\ V /  |  _|   | |   \\ V /  | |___ \n" +
-      "|____/ |_____|   \\_/   |_|    |___|   \\_/   |_____|",
-    "color: #a600f4;"
-  );
 
   ConfigProvider.config({
     theme: {

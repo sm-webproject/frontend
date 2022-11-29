@@ -1,31 +1,30 @@
+import MainLayout from "@components/MainLayout";
 import { RouteObject } from "react-router";
+import { Navigate } from "react-router-dom";
 
 import IndexPage from "@/pages/IndexPage";
-import WritePage from "@/pages/WriteBoardPage";
-
-import MainLayout from "../components/MainLayout";
-import InfoPage from "../pages/DetailPage";
-import ListPage from "../pages/ListPage";
+import ListPage from "@/pages/ListPage";
+import LoginPage from "@/pages/LoginPage";
 
 const IndexRoute: RouteObject = {
   path: "/",
   element: <MainLayout />,
   children: [
     {
+      path: "/login",
+      element: <LoginPage />,
+    },
+    {
       path: "/list",
       element: <ListPage />,
     },
     {
-      path: "/write",
-      element: <WritePage />,
-    },
-    {
-      path: "/detail",
-      element: <InfoPage />,
-    },
-    {
       path: "/",
       element: <IndexPage />,
+    },
+    {
+      path: "*",
+      element: <Navigate to="/" />,
     },
   ],
 };
