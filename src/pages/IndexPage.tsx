@@ -1,11 +1,19 @@
+import { EditOutlined } from "@ant-design/icons";
 import { Box, Flex, Image, Text } from "@chakra-ui/react";
 import Carouselbox from "@components/CarouselBox";
 import { Layout } from "@components/Element";
+import { Avatar } from "antd";
 import React from "react";
+import { Link } from "react-router-dom";
 
 const IndexPage = () => (
   <Layout bg="background">
     <Carouselbox />
+    <Flex bottom="3" position="fixed" right="3">
+      <Link to="/write">
+        <Avatar icon={<EditOutlined />} />
+      </Link>
+    </Flex>
     <Flex flexDir="column" px="20px">
       <Box my="48px" width="100%">
         <Text color="mainText" fontSize="3xl" fontWeight="bold">
