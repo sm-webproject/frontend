@@ -4,6 +4,8 @@ import moment, { Moment } from "moment";
 import create from "zustand";
 import { persist } from "zustand/middleware";
 
+import LoginResult from "@/interfaces/LoginResult";
+
 import User from "../interfaces/User";
 
 export interface ThemeState {
@@ -36,15 +38,22 @@ const useAuth = create(
         }
       },
       login: async (id, pw) => {
+        const formData = new FormData();
+        formData.append("username", id);
+        formData.append("password", pw);
+        const { data } = await axios.post<LoginResult>("/signin", formData);
+
         try {
-          // axios.defaults.headers.common.Authorization =
-          //   "Bearer " + data.payload.accessToken;
-          //
-          // set({
-          //   user: { nickname: "test" },
-          //   accessTokenExpiresAt: moment(data.payload.accessTokenExpiresAt),
-          //   accessToken: data.payload.accessToken,
-          // });
+          axios.defaults.headers.common.Authorization =
+            "Bearer " + data.accessToken;
+
+          const { data: userData } = await axios.get<User>("/me");
+
+          set({
+            user: userData,
+            accessTokenExpiresAt: moment(data.accessTokenExpireAt),
+            accessToken: data.accessToken,
+          });
         } catch (e) {
           Modal.error({
             content: "로그인 실패",
@@ -57,6 +66,7 @@ const useAuth = create(
           accessTokenExpiresAt: undefined,
           accessToken: undefined,
         });
+        Modal.success({ title: "로그아웃", content: "로그아웃 되었습니다." });
       },
     }),
     {

@@ -1,14 +1,20 @@
 import { Center, Flex } from "@chakra-ui/react";
 import { Layout, Text } from "@components/Element";
+import useAuth from "@store/useAuth";
 import { Button, Form, Input } from "antd";
 import { useCallback } from "react";
 
 const LoginPage = () => {
+  const { login } = useAuth();
+
   /** Form Submit
    * @param {any} v */
-  const handleSubmit = useCallback((v: any) => {
-    console.log(v);
-  }, []);
+  const handleSubmit = useCallback(
+    async ({ id, pw }) => {
+      await login(id, pw);
+    },
+    [login]
+  );
 
   return (
     <Layout>
@@ -21,16 +27,16 @@ const LoginPage = () => {
             minWidth="320px"
             p="32px"
           >
+            <Text color="mainText" fontWeight="bold">
+              ID
+            </Text>
             <Form.Item name="id" noStyle>
-              <Text color="mainText" fontWeight="bold">
-                ID
-              </Text>
               <Input type="text" />
             </Form.Item>
+            <Text color="mainText" fontWeight="bold">
+              PW
+            </Text>
             <Form.Item name="pw" noStyle>
-              <Text color="mainText" fontWeight="bold">
-                PW
-              </Text>
               <Input type="password" />
             </Form.Item>
             <Flex justifyContent="end">

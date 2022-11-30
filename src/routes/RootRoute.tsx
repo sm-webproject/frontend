@@ -1,3 +1,4 @@
+import PublicRoute from "@routes/PublicRoute";
 import { useEffect } from "react";
 import { RouteObject } from "react-router";
 import { useRoutes } from "react-router-dom";
@@ -17,8 +18,9 @@ const RootRoute = () => {
   }, [initial, loaded]);
 
   if (loaded) {
-    routes.push(IndexRoute);
+    routes.push(PublicRoute);
     if (user) routes.push(AuthRoute);
+    else routes.push(IndexRoute);
   }
 
   const route = useRoutes(routes);

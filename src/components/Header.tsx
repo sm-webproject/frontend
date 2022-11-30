@@ -5,7 +5,7 @@ import {
   OrderedListOutlined,
   UserOutlined,
 } from "@ant-design/icons";
-import { Flex } from "@chakra-ui/react";
+import { Box, Flex } from "@chakra-ui/react";
 import { Text } from "@components/Element";
 import useAuth from "@store/useAuth";
 import { Avatar } from "antd";
@@ -13,7 +13,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const Header = () => {
-  const { user } = useAuth();
+  const { user, logout } = useAuth();
 
   return (
     <Flex
@@ -43,7 +43,9 @@ const Header = () => {
           <Avatar icon={<OrderedListOutlined />} />
         </Link>
         {user ? (
-          <Avatar icon={<LogoutOutlined />} />
+          <Box cursor="pointer">
+            <Avatar icon={<LogoutOutlined />} onClick={() => logout()} />
+          </Box>
         ) : (
           <Link to="login">
             <Avatar icon={<LoginOutlined />} />
