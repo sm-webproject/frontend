@@ -18,17 +18,6 @@ const Cards = ({ board }: CardsProps) => (
         <Text color="subText" fontSize="xs" fontWeight="bold">
           {board.writer}
         </Text>
-        <Text
-          color="mainText"
-          fontSize="xs"
-          fontWeight="bold"
-          overflow="hidden"
-          textOverflow="ellipsis"
-          whiteSpace="nowrap"
-          width="200px"
-        >
-          {board.content}
-        </Text>
       </Flex>
       <Text color="subText" fontSize="xs" fontWeight="bold">
         {board.create_at}
