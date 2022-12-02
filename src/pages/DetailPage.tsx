@@ -5,7 +5,7 @@ import { Modal } from "antd";
 import axios from "axios";
 import moment from "moment";
 import { useCallback } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import useSWR from "swr";
 
 import Board from "@/interfaces/Board";
@@ -47,16 +47,18 @@ const DetailPage = () => {
             >
               Delete
             </Button>
-            <Button
-              bg="background"
-              border="1px solid black"
-              borderColor="mainText"
-              color="mainText"
-              fontSize="sm"
-              textDecorationLine="underline"
-            >
-              Edit
-            </Button>
+            <Link to={"/write?id=" + id}>
+              <Button
+                bg="background"
+                border="1px solid black"
+                borderColor="mainText"
+                color="mainText"
+                fontSize="sm"
+                textDecorationLine="underline"
+              >
+                Edit
+              </Button>
+            </Link>
           </Flex>
           <Text fontSize="40px" fontWeight="bold">
             {data.title}

@@ -1,5 +1,6 @@
 import MainLayout from "@components/MainLayout";
 import { RouteObject } from "react-router";
+import { Navigate } from "react-router-dom";
 
 import DetailPage from "@/pages/DetailPage";
 import IndexPage from "@/pages/IndexPage";
@@ -20,6 +21,10 @@ const PublicRoute: RouteObject = {
     {
       path: "/board/:id",
       element: <DetailPage />,
+    },
+    {
+      path: "*",
+      element: <Navigate to="/" />,
     },
   ],
 };

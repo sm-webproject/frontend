@@ -7,6 +7,7 @@ interface User {
   tier: number;
   phone: string;
   email: string;
+  index: number;
 }
 
 export default User;
