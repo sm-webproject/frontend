@@ -15,7 +15,7 @@ const PublicRoute: RouteObject = {
       element: <ListPage />,
     },
     {
-      path: "/detail",
+      path: "/board/:id",
       element: <DetailPage />,
     },
     {
