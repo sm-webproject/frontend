@@ -39,7 +39,7 @@ const Header = () => {
             <Avatar icon={<EditOutlined />} />
           </Link>
         )}
-        <Link to="list">
+        <Link to="board">
           <Avatar icon={<OrderedListOutlined />} />
         </Link>
         {user ? (

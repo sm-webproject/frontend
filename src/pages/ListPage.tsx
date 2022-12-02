@@ -2,6 +2,7 @@ import { Flex, Text } from "@chakra-ui/react";
 import Cards from "@components/Cards";
 import { Layout } from "@components/Element";
 import React from "react";
+import { Link } from "react-router-dom";
 
 import Board from "@/interfaces/Board";
 
@@ -58,7 +59,9 @@ const ListPage = () => (
 
     <Flex flexDir="column" gap="16px">
       {sampleData.map((value, index) => (
-        <Cards key={index} board={value} />
+        <Link key={index} to="/board/3">
+          <Cards board={value} />
+        </Link>
       ))}
     </Flex>
   </Layout>
