@@ -1,4 +1,4 @@
-import { Flex } from "@chakra-ui/react";
+import { Flex, Text } from "@chakra-ui/react";
 import Cards from "@components/Cards";
 import { Layout } from "@components/Element";
 import React from "react";
@@ -10,7 +10,7 @@ const sampleData: Board[] = [
     mainImg: "/images/main/example_1.png",
     title: "테스트1",
     writer: "작성자1",
-    content: "내용1",
+    content: "내용이 너무 길어서 넘칠때 ...처리해준다",
     create_at: "2020-11-29",
   },
   {
@@ -45,6 +45,17 @@ const sampleData: Board[] = [
 
 const ListPage = () => (
   <Layout>
+    <Flex flexDir="column" gap="16px" height="100px">
+      <Text
+        fontSize="20px"
+        fontWeight="bold"
+        lineHeight="100px"
+        textAlign="center"
+      >
+        Board List
+      </Text>
+    </Flex>
+
     <Flex flexDir="column" gap="16px">
       {sampleData.map((value, index) => (
         <Cards key={index} board={value} />

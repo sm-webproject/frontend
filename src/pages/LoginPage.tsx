@@ -21,30 +21,39 @@ const LoginPage = () => {
       <Form onFinish={handleSubmit}>
         <Center>
           <Flex
-            bg="primary"
+            bg="rgb(0, 0, 0, 0.6)"
+            borderRadius="20px"
+            boxShadow="0 15px 15px lightgray"
             flexDir="column"
             gap="8px"
             minWidth="320px"
             p="32px"
           >
-            <Text color="mainText" fontWeight="bold">
+            <Text color="white" fontWeight="bold" textShadow="1px 1px 1px #000">
               ID
             </Text>
             <Form.Item name="id" noStyle>
               <Input type="text" />
             </Form.Item>
-            <Text color="mainText" fontWeight="bold">
+            <Text color="white" fontWeight="bold" textShadow="1px 1px 1px #000">
               PW
             </Text>
             <Form.Item name="pw" noStyle>
               <Input type="password" />
             </Form.Item>
             <Flex justifyContent="end">
-              <Text color="mainText" fontSize="xs">
+              <Text color="white" fontSize="xs" textShadow="1px 1px 1px #000">
                 아이디/비밀번호 찾기
               </Text>
             </Flex>
-            <Button htmlType="submit" type="primary">
+            <Button
+              htmlType="submit"
+              style={{
+                background: "black",
+                color: "white",
+                borderColor: "black",
+              }}
+            >
               로그인
             </Button>
           </Flex>

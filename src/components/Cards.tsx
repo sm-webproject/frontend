@@ -8,13 +8,7 @@ interface CardsProps {
 }
 
 const Cards = ({ board }: CardsProps) => (
-  <Flex
-    border="1px solid"
-    borderColor="primary"
-    borderRadius="16px"
-    gap="16px"
-    p="16px"
-  >
+  <Flex borderBottom=" 1px solid" borderColor="primary" gap="16px" p="16px">
     <Img height="80px" src={board.mainImg} width="80px" />
     <Flex justifyContent="space-between" width="100%">
       <Flex flexDir="column">
@@ -23,6 +17,17 @@ const Cards = ({ board }: CardsProps) => (
         </Text>
         <Text color="subText" fontSize="xs" fontWeight="bold">
           {board.writer}
+        </Text>
+        <Text
+          color="mainText"
+          fontSize="xs"
+          fontWeight="bold"
+          overflow="hidden"
+          textOverflow="ellipsis"
+          whiteSpace="nowrap"
+          width="200px"
+        >
+          {board.content}
         </Text>
       </Flex>
       <Text color="subText" fontSize="xs" fontWeight="bold">
