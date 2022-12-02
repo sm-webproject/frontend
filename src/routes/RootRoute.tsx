@@ -9,7 +9,7 @@ import IndexRoute from "./IndexRoute";
 
 const RootRoute = () => {
   const { loaded, initial, user } = useAuth();
-  const routes: RouteObject[] = [];
+  const routes: RouteObject[] = [PublicRoute];
 
   useEffect(() => {
     if (!loaded) {
