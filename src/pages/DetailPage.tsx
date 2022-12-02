@@ -5,7 +5,7 @@ import { Modal } from "antd";
 import axios from "axios";
 import moment from "moment";
 import { useCallback } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import useSWR from "swr";
 
 import Board from "@/interfaces/Board";
@@ -31,20 +31,6 @@ const DetailPage = () => {
     }
   }, [id, navigate]);
 
-  const handleEdit = useCallback(async () => {
-    try {
-      await axios.put("/boards/" + id);
-      Modal.success({
-        title: "게시글 수정",
-        content: "삭제되었습니다.",
-        onOk: () => navigate("/board"),
-        onCancel: () => navigate("/board"),
-      });
-    } catch {
-      Modal.error({ title: "게시글 삭제", content: "오류가 발생했습니다." });
-    }
-  }, [id, navigate]);
-
   return (
     <Layout>
       {data && (
@@ -61,17 +47,18 @@ const DetailPage = () => {
             >
               Delete
             </Button>
-            <Button
-              bg="background"
-              border="1px solid black"
-              borderColor="mainText"
-              color="mainText"
-              fontSize="sm"
-              onClick={() => handleEdit()}
-              textDecorationLine="underline"
-            >
-              Edit
-            </Button>
+            <Link to={"/write?id=" + id}>
+              <Button
+                bg="background"
+                border="1px solid black"
+                borderColor="mainText"
+                color="mainText"
+                fontSize="sm"
+                textDecorationLine="underline"
+              >
+                Edit
+              </Button>
+            </Link>
           </Flex>
           <Text fontSize="40px" fontWeight="bold">
             {data.title}
