@@ -4,4 +4,5 @@ export default interface Board {
   writer: string;
   content: string;
   create_at: string;
+  board_id: number;
 }

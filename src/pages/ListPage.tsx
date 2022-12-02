@@ -26,7 +26,7 @@ const ListPage = () => {
       <Flex flexDir="column" gap="16px">
         {data &&
           data.map((value, index) => (
-            <Link key={index} to="/">
+            <Link key={index} to={"/board/" + value.board_id}>
               <Cards board={value} />
             </Link>
           ))}
