@@ -28,7 +28,7 @@ const IndexPage = () => {
             Template Blog의 약자로 개발자들을 위한 Tlog 사이트 입니다
           </Text>
         </Box>
-        <Flex flexDir="column" gap="16px">
+        <Flex flexDir="column" gap="16px" mb="16px">
           <Text color="mainText" height="40px">
             Tlog에서 제공되는 템플릿을 활용해보세요
           </Text>

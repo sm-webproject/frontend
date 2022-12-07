@@ -1,5 +1,6 @@
 import { Box, Button, Flex, Image, Text } from "@chakra-ui/react";
 import { Layout } from "@components/Element";
+import useAuth from "@store/useAuth";
 import { getFetcher } from "@utils/fetcher";
 import { Modal } from "antd";
 import axios from "axios";
@@ -14,6 +15,7 @@ const DetailPage = () => {
   const { id } = useParams<{ id: string }>();
 
   const navigate = useNavigate();
+  const { user } = useAuth();
 
   const { data } = useSWR<Board>("/boards/" + id, getFetcher);
 
@@ -35,37 +37,43 @@ const DetailPage = () => {
     <Layout>
       {data && (
         <Flex flexDir="column" gap="16px" margin="auto" mx={3} my={3}>
-          <Flex gap="16px" justifyContent="end">
-            <Button
-              bg="background"
-              border="1px solid"
-              borderColor="mainText"
-              color="mainText"
-              fontSize="sm"
-              onClick={() => handleDelete()}
-              textDecorationLine="underline"
-            >
-              Delete
-            </Button>
-            <Link to={"/write?id=" + id}>
+          {(user?.username === "admin" || data.writer === user?.username) && (
+            <Flex gap="16px" justifyContent="end">
               <Button
                 bg="background"
-                border="1px solid black"
+                border="1px solid"
                 borderColor="mainText"
                 color="mainText"
                 fontSize="sm"
+                onClick={() => handleDelete()}
                 textDecorationLine="underline"
               >
-                Edit
+                Delete
               </Button>
-            </Link>
-          </Flex>
-          <Text fontSize="40px" fontWeight="bold">
+              <Link to={"/write?id=" + id}>
+                <Button
+                  bg="background"
+                  border="1px solid black"
+                  borderColor="mainText"
+                  color="mainText"
+                  fontSize="sm"
+                  textDecorationLine="underline"
+                >
+                  Edit
+                </Button>
+              </Link>
+            </Flex>
+          )}
+          <Text color="mainText" fontSize="40px" fontWeight="bold">
             {data.title}
           </Text>
           <Flex my="3">
-            <Text fontWeight="bold">{data.writer}&nbsp;·&nbsp;</Text>
-            <Text>{moment(data.create_at).format("YYYY년 MM월 DD일")}</Text>
+            <Text color="mainText" fontWeight="bold">
+              {data.writer}&nbsp;·&nbsp;
+            </Text>
+            <Text color="mainText">
+              {moment(data.create_at).format("YYYY년 MM월 DD일")}
+            </Text>
           </Flex>
           <Image src="/images/main/example_1.png" width="100%" />
           <Box dangerouslySetInnerHTML={{ __html: data.content }} m="3" />

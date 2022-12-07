@@ -15,6 +15,7 @@ const ListPage = () => {
     <Layout>
       <Flex flexDir="column" gap="16px" height="100px">
         <Text
+          color="mainText"
           fontSize="20px"
           fontWeight="bold"
           lineHeight="100px"
